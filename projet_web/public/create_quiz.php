@@ -1,1 +1,0 @@
-<?php require_once __DIR__.'/../src/controllers/QuizController.php'; (new QuizController())->create(); ?>
