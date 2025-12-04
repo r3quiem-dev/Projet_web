@@ -1,0 +1,188 @@
+/* Centrage spécifique Login */
+body.auth-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+/* Switch & Slider */
+.switch {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.slider {
+    position: relative;
+    width: 50px;
+    height: 20px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    background-color: var(--bg-color);
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 10;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    left: 0px;
+    bottom: 0px;
+    background-color: var(--bg-color);
+    box-shadow: 0 3px 0 var(--main-color);
+    transition: 0.3s;
+}
+.toggle {
+    display: none;
+}
+.toggle:checked + .slider {
+    background-color: var(--input-focus);
+}
+.toggle:checked + .slider:before {
+    transform: translateX(30px);
+}
+
+/* Textes Login/Signup */
+.card-side::before {
+    position: absolute;
+    content: "Log in";
+    top: 0;
+    left: 30px;
+    width: 60px;
+    text-decoration: underline;
+    color: var(--font-color);
+    font-weight: 600;
+    text-align: right;
+}
+.card-side::after {
+    position: absolute;
+    content: "Sign up";
+    top: 0;
+    right: 30px;
+    width: 60px;
+    text-decoration: none;
+    color: var(--font-color);
+    font-weight: 600;
+    text-align: left;
+}
+.toggle:checked ~ .card-side:before {
+    text-decoration: none;
+}
+.toggle:checked ~ .card-side:after {
+    text-decoration: underline;
+}
+
+/* Flip Card */
+.flip-card__inner {
+    width: 300px;
+    height: 520px; /* Ajusté pour Captcha */
+    position: relative;
+    background-color: transparent;
+    perspective: 1000px;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    margin-top: 40px;
+}
+.toggle:checked ~ .flip-card__inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card__front, .flip-card__back {
+    padding: 20px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background: lightgrey;
+    gap: 15px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    z-index: 2;
+}
+.flip-card__back {
+    transform: rotateY(180deg);
+    z-index: 1;
+}
+
+.toggle:checked ~ .flip-card__inner .flip-card__front {
+    z-index: 1;
+}
+
+.toggle:checked ~ .flip-card__inner .flip-card__back {
+    transform: rotateY(180deg);
+    z-index: 2;
+}
+/* Form Elements */
+.flip-card__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+.title {
+    margin: 10px 0;
+    font-size: 25px;
+    font-weight: 900;
+}
+.flip-card__input {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 5px 10px;
+    outline: none;
+    box-sizing: border-box;
+}
+.flip-card__input:focus {
+    border: 2px solid var(--input-focus);
+}
+.flip-card__btn {
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.flip-card__btn:active {
+    box-shadow: 0px 0px;
+    transform: translate(3px, 3px);
+}
+
+/* Captcha Center */
+.g-recaptcha {
+    transform: scale(0.85);
+    transform-origin: center;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
